@@ -3,6 +3,7 @@ import sys
 from typing import List
 from data import World, Move, Person, World, Map, Shade, Tombstone, Point
 from game import Game, PlayerInterface
+from random import shuffle
 
 
 class Player(PlayerInterface):
@@ -17,7 +18,9 @@ class Player(PlayerInterface):
     def get_turn(self, world: World) -> List[Move]:
         moves = []
         for id, ant in world.alive_shades.items():
-            for ngb in ant.position.get_neighbouring():
+            neighbours = ant.position.get_neighbouring()
+            shuffle(neighbours)
+            for ngb in neighbours:
                 if world.map.can_move_to(ngb):
                     moves.append(Move(id, ngb))
                     break
