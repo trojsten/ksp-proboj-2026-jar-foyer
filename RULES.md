@@ -104,9 +104,8 @@ z hráčov.
 
 ### Fáza rodenia ľudí
 
-Každý ťah sa počet novo narodených ľudí vypočíta pomocou vzorca `(max_population
-- current_population)/2`. Potom sa tento počet ľudí "narodí" na náhodných
-políčkach, ktoré nie sú blokované vodou.
+V tejto fáze sa na náhodných nezablokovaných políčkach mapy objavia noví
+ľudia. 
 
 ## Eliminácia hráčov
 
