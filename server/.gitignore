@@ -1,0 +1,11 @@
+build*/
+.cache/
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+Makefile
+_deps/
+build/

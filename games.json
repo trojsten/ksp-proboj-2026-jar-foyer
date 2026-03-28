@@ -1,0 +1,11 @@
+[
+  {
+    "gamefolder": "hra",
+    "players": [
+      "cpp1",
+      "cpp2",
+      "py"
+    ],
+    "args": "../maps/maze.ppm"
+  }
+]
