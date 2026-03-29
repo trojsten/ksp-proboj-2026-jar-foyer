@@ -152,7 +152,7 @@ bool Game::check_end() {
     if(alive_players.size() == 1) {
         bool should_game_end = true;
         PlayerID last_player = *alive_players.begin();
-        for(Hill& hill : alive_hills) {
+        for(auto&& hill : alive_hills) {
             if(hill.get_owner() != last_player) {
                 should_game_end = false;
                 break;
