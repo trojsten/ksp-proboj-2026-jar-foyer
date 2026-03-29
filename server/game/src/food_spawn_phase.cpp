@@ -11,6 +11,9 @@ int get_food_count_to_spawn(int current_food_count) {
     constexpr double MASS_SPAWN_PROBABILIY = .02;
 
     int remainder = MAX_FOOD_COUNT - current_food_count;
+    if (remainder == 0) {
+        return 0;
+    }
     std::uniform_real_distribution<> prob_dist(0, 1);
     if(prob_dist(rng) < MASS_SPAWN_PROBABILIY){
         return remainder;
@@ -25,9 +28,10 @@ int get_food_count_to_spawn(int current_food_count) {
     return dist(rng);
 }
 
-vector<Point> get_new_food_locations(int count, const Map& world_map) {
+vector<Point> get_new_food_locations(int alive_food_count, const Map& world_map) {
     vector<Point> food_locations;
-    for (int i = 0; i < count; ) {
+    int to_spawn = get_food_count_to_spawn(alive_food_count);
+    for (int i = 0; i < to_spawn; ) {
         int x = uniform_int_distribution<>(0, world_map.get_width() - 1)(rng);
         int y = uniform_int_distribution<>(0, world_map.get_height() - 1)(rng);
         if(world_map.can_move_to({x, y})){

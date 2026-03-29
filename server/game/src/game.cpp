@@ -103,7 +103,7 @@ void Game::game_loop() {
 
     // spawn food
     //
-    for(Point p : get_new_food_locations((MAX_FOOD_COUNT - alive_food.size())/2, world_map)) {
+    for(Point p : get_new_food_locations(alive_food.size(), world_map)) {
         alive_food.insert(Food(p));
     }
 
