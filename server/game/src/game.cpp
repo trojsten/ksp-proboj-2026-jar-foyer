@@ -150,8 +150,18 @@ bool Game::check_end() {
         return true;
     }
     if(alive_players.size() == 1) {
-        cerr << "Game end: Last player alive" << endl;
-        return true;
+        bool should_game_end = true;
+        PlayerID last_player = *alive_players.begin();
+        for(Hill& hill : alive_hills) {
+            if(hill.get_owner() != last_player) {
+                should_game_end = false;
+                break;
+            }
+        }
+        if(should_game_end){
+            cerr << "Game end: Last player alive" << endl;
+            return true;
+        }
     }
     if(current_turn >= MAX_TURN_COUNT) {
         cerr << "Game end: Max turn count reached" << endl;
